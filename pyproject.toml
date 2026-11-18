@@ -1,0 +1,32 @@
+[project]
+name = "speedtest"
+version = "0.1.0"
+description = "Download speed measurement CLI with per-phase TCP/TLS timing breakdown"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "curl-cffi>=0.17.0",
+    "rich>=15.0.0",
+    "typer[all]>=0.29.1",
+]
+
+[project.scripts]
+speedtest = "speedtest.cli:app"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests as integration tests that make real network calls",
+]
+
+[tool.mypy]
+python_version = "3.11"
+check_untyped_defs = true
+disallow_untyped_defs = false
+warn_unused_ignores = true
+
